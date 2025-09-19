@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SATORI Demo</title>
+  <style>
+    body { margin:0; background:#000; color:#fff; font-family:sans-serif; }
+    nav { position:fixed; top:0; width:100%; background:#111; display:flex; gap:40px; padding:20px; justify-content:center; z-index:100; }
+    nav a { color:#fff; text-decoration:none; cursor:pointer; font-size:18px; }
+    nav a.active { border-bottom:2px solid gold; }
+    iframe { width:100%; height:100vh; border:0; margin-top:70px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a onclick="loadDemo('watch')" id="cinematic-style-flow.lovable.app">Watch & Shop</a>
+    <a onclick="loadDemo('creators')" id="satori-creator-sanctuary.lovable.app">Creators</a>
+    <a onclick="loadDemo('world')" id="satori-playhouse.lovable.app">World</a>
+  </nav>
+
+  <iframe id="demoFrame" src="https://demo.lovable.ai/YOUR-WATCH-LINK"></iframe>
+
+  <script>
+    function loadDemo(page) {
+      const links = {
+        watch: "https://demo.lovable.ai/YOUR-WATCH-LINK",
+        creators: "https://demo.lovable.ai/YOUR-CREATORS-LINK",
+        world: "https://demo.lovable.ai/YOUR-WORLD-LINK"
+      };
+      document.getElementById("demoFrame").src = links[page];
+      document.querySelectorAll("nav a").forEach(a => a.classList.remove("active"));
+      document.getElementById(page+"Link").classList.add("active");
+    }
+    // Mark Watch active on load
+    document.getElementById("watchLink").classList.add("active");
+  </script>
+</body>
+</html>
